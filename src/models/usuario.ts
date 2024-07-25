@@ -13,4 +13,11 @@ export class Usuario{
     contrasena: string;
     direccion: string;
     historialPedidos: Pedido[];     //historialPedidos: lista de pedidos realizados por el usuario
+    constructor(nombre: string, correoElectronico: string, contrasena: string, direccion: string, historialPedidos: Pedido[]){
+        this.nombre = nombre;
+        this.correoElectronico = correoElectronico;
+        this.contrasena = contrasena;
+        this.direccion = direccion;
+        this.historialPedidos = historialPedidos;
+    }
 }
