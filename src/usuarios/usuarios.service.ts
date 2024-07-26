@@ -59,7 +59,7 @@ export class UsuariosService {
     /**Elimina del registro el usuario que coincida con el id ingresado.*/
     eliminarUsuarioPorId(id: number): void{
         let idEliminado: number = -1;
-        for(let indice: number = 0; indice <= this.usuarios.length; indice++){
+        for(let indice: number = 0; indice < this.usuarios.length; indice++){
             if(this.usuarios[indice].id == id){
                 idEliminado = indice;
             }
