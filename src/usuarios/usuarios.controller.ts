@@ -3,10 +3,7 @@ import { Usuario } from 'src/models/usuario';
 import { UsuarioDTO } from 'src/models/usuarioDTO';
 import { UsuariosService } from './usuarios.service';
 import { Response } from 'express';
-//// a. Registrar un nuevo usuario (Verificar si existe el usuario según el correo ingresado)
-//// b. Obtener un usuario según su id, en caso de que el usuario no exista devolver el código 404.
-//// c. Obtener todos los usuarios (excluir la password en la lista )
-//// d. Eliminar un usuario según su id
+
 @Controller('usuarios')
 export class UsuariosController {
     constructor(private readonly servicioUsuarios: UsuariosService){}
