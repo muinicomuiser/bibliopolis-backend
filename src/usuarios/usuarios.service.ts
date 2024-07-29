@@ -10,16 +10,20 @@ export class UsuariosService {
     /**Arreglo de usuarios registrados.*/
     usuarios: Usuario[] = [];
 
-    /**Agrega un usuario al arreglo de usuarios registrados, siempre y cuando el correo del usuario no esté ya presente en el arreglo.*/
-    registrarUsuario(usuario: Usuario): void{
-        if(this.usuarios.length > 0){
-            if(this.compararCorreos(usuario) == false){
-                usuario.id = this.usuarios[this.usuarios.length - 1].id + 1;
-            }            
-        } else{
-            usuario.id = 1;
-        }
-        this.usuarios.push(usuario);
+    /**Agrega un usuario al arreglo de usuarios registrados, siempre y cuando el correo del usuario no esté ya presente en el arreglo.      
+     * Retorna true si el registro es exitoso, y false si no se puede registrar, porque el usuario ya existe.
+    */
+    registrarUsuario(usuario: Usuario): boolean{
+        if(this.compararCorreos(usuario) == false){
+            if(this.usuarios.length > 0){
+                    usuario.id = this.usuarios[this.usuarios.length - 1].id + 1;
+                } else{
+                    usuario.id = 1;
+                }            
+                this.usuarios.push(usuario);
+                return true;
+            }
+        return false;
     }
 
     /**Retorna true si el correo del usuario ingresado ya existe en el arreglo de usuarios.*/
@@ -50,7 +54,6 @@ export class UsuariosService {
             if(usuario.id == id){
                 let usuarioDTO: UsuarioDTO = new UsuarioDTO(usuario.id, usuario.nombre, usuario.correoElectronico, usuario.direccion, usuario.historialPedidos);
                 return usuarioDTO;
-
             }
         }
         return null;
